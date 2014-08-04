@@ -1,0 +1,23 @@
+{% extends "base.html" %}
+{% load staticfiles %}
+{% block head %}
+    <script src="{% static "js/match.js" %}" type="text/javascript"></script>
+{% endblock %}
+
+{% block nav %}{% endblock %}
+
+{% load staticfiles %}
+{% block content %}
+    <center>
+        <button id="easy">Easy</button>
+        <button id="medium">Medium</button>
+        <button id="difficult">Difficult</button>
+    </center>
+
+
+{% endblock %}
+
+{% block subnav %}
+{% endblock %}
+
+

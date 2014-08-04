@@ -1,0 +1,62 @@
+{% extends "base.html" %}
+{% load staticfiles %}
+{% block head %}
+    <script src="{% static "js/match.js" %}" type="text/javascript"></script>
+{% endblock %}
+
+{% block nav %}{% endblock %}
+
+{% load staticfiles %}
+{% block content %}
+
+    <!-- Bootstrap JS Modal -->
+    <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+            <h4 class="modal-title" id="myModalLabel">Edit Profile</h4>
+          </div>
+          <div class="modal-body">
+            <form enctype="multipart/form-data" method="post">
+                {% csrf_token %}
+                <p>First Name: {{ form.first_name }}</p>
+                <p>Last Name: {{ form.last_name }}</p>
+                <p>email: {{ form.email }}</p>
+                {{ form.password.as_hidden }}
+                {{ form.username.as_hidden }}
+                <input type="submit" value="Submit" name="profile">
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- End Modal -->
+
+    <!-- Print profile -->
+    <div class="col-sm-12 col-md-12">
+        <!-- Main profile info -->
+
+        <h3 class="hl">{{ user.first_name }} {{ user.last_name }}'s Profile</h3>
+
+        <p>Last login: {{ user.last_login|date:"d M Y" }}</p>
+        <p>Joined: {{ user.date_joined|timesince }} ago.</p>
+        <p>Email: {{ user.email }}</p>
+        {% for score in scores %}
+            {{ score.score }}
+            {{ score.game }}
+        {% endfor %}
+
+        <button class="btn btn-primary btn-sm pull-right" data-toggle="modal" data-target="#myModal">
+            Edit Profile
+        </button>
+
+
+    </div>
+
+{% endblock %}
+
+{% block subnav %}
+{% endblock %}
+
+

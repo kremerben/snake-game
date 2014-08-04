@@ -3,11 +3,8 @@
 
     {% load staticfiles %}
 {% block content %}
-        <center>
-            <canvas id="canvas" width="600" height="600"></canvas><br>
-            <button id="start">START</button>
-        </center>
-
+            <a class="btn btn-default" href="{% url 'snakes_game' %}" id="snakesGame">Snakes</a>
+            <a class="btn btn-default" href="{% url 'match_game' %}" id="matchGame">Matching Game</a>
 
     {% endblock %}
 

@@ -18,7 +18,6 @@ canvasContext.font="20px Georgia";
     var gameLoopInterval;
 
 function startGame() {
-    gameSpeed = 200;
     score = 0;
     // Let's set the game loop to run every 60 milliseconds
     gameLoopInterval = setInterval(gameLoop, gameSpeed);
@@ -191,8 +190,19 @@ function checkGameOver(position, snakeBody) {
     }
 }
 
-    $('#start').on("click", function() {
-//        gameOver();
+    $('#easy').on("click", function() {
+        clearInterval(gameLoopInterval);
+        gameSpeed = 250;
+        startGame();
+    });
+    $('#medium').on("click", function() {
+        clearInterval(gameLoopInterval);
+        gameSpeed = 200;
+        startGame();
+    });
+    $('#difficult').on("click", function() {
+        clearInterval(gameLoopInterval);
+        gameSpeed = 150;
         startGame();
     });
 

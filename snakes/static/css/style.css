@@ -1,12 +1,14 @@
 body {
     /*font-family: Montserrat, "Helvetica", sans-serif;*/
     text-align: center;
+    margin-top: 80px;
 }
 
-#start {
+#start, #easy, #medium, #difficult {
     height:40px;
     width:600px;
     font-size: 2em;
+    display: block;
 }
 
 canvas {
