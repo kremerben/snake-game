@@ -1,0 +1,15 @@
+body {
+    /*font-family: Montserrat, "Helvetica", sans-serif;*/
+    text-align: center;
+}
+
+#start {
+    height:40px;
+    width:600px;
+    font-size: 2em;
+}
+
+canvas {
+    font-size: 2em;
+
+}
