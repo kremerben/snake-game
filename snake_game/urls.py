@@ -13,6 +13,7 @@ urlpatterns = patterns('',
     url(r'^snakes/$', 'snakes.views.snakes_game', name='snakes_game'),
     url(r'^match/$', 'snakes.views.match_game', name='match_game'),
 
+    url(r'^update_score/$', 'snakes.views.update_score', name='update_score'),
 
     url(r'^register/$', 'snakes.views.register', name='register'),
     url(r'^login/$', 'django.contrib.auth.views.login', name='login'),

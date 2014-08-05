@@ -1,14 +1,68 @@
 {% extends "base.html" %}
+{% load staticfiles %}
+
 {% block nav %}{% endblock %}
 
-    {% load staticfiles %}
 {% block content %}
-            <a class="btn btn-default" href="{% url 'snakes_game' %}" id="snakesGame">Snakes</a>
-            <a class="btn btn-default" href="{% url 'match_game' %}" id="matchGame">Matching Game</a>
+        <a class="btn btn-default" href="{% url 'snakes_game' %}" id="snakesGame">Snakes</a>
+        <a class="btn btn-default" href="{% url 'match_game' %}" id="matchGame">Matching Game</a>
 
-    {% endblock %}
+<div class="row">
+    <div class="col-sm-12 col-md-6">
 
-    {% block subnav %}
-    {% endblock %}
+    <h1>Match Game Leaderboard</h1>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Username</th>
+                <th>Score</th>
+                <th>Mode</th>
+                <th>Time</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for match in match_leader %}
+            <tr>
+                <td>{{ match.user.username }}</td>
+                <td>{{ match.score }}</td>
+                <td>{{ match.mode }}</td>
+                <td>{{ match.timestamp }}</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+    </div>
+
+    <h1>Snakes! Leaderboard</h1>
+    <div class="col-sm-12 col-md-6">
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Username</th>
+                <th>Score</th>
+                <th>Mode</th>
+                <th>Time</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for snake in snake_leader %}
+            <tr>
+                <td>{{ snake.user.username }}</td>
+                <td>{{ snake.score }}</td>
+                <td>{{ snake.mode }}</td>
+                <td>{{ snake.timestamp }}</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+    </div>
+
+    </div>
+</div>
+{% endblock %}
+
+{% block subnav %}
+{% endblock %}
 
 

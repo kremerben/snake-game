@@ -10,7 +10,6 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 	<head>
 		<title>{%  block title %}Snakes{% endblock %}</title>
         <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js" type="text/javascript"></script>
-        <script src="{% static "js/snake.js" %}" type="text/javascript"></script>
         <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js" type="text/javascript"></script>
 
         <link rel="stylesheet" type="text/css" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
@@ -35,13 +34,15 @@ License URL: http://creativecommons.org/licenses/by/3.0/
                 <span class="icon-bar"></span>
             </button>
 {#                <img src="{% static "img/MNBlogo.gif" %}" alt="" style="max-height:40px" />#}
+            <a class="navbar-brand" href="{% url 'home' %}">Home</a>
+
         </div>
         <div class="navbar-collapse collapse">
             <ul class="nav navbar-nav navbar-right">
-{#        <li><a href="{% url "clubs" %}"> Clubs</a>#}
-{#        <li><a href="{% url "races" %}"> Races</a>#}
-{#        <li><a href="{% url "racers" %}"> Racers</a>#}
-{#        <li><a href="{% url "results" %}"> Results</a>#}
+            <li><a href="{% url "snakes_game" %}"> Snakes</a>
+            <li><a href="{% url "match_game" %}"> Match</a>
+    {#        <li><a href="{% url "racers" %}"> Racers</a>#}
+    {#        <li><a href="{% url "results" %}"> Results</a>#}
     {% block main_nav %}{% endblock %}
             <li>
   <ul class="nav navbar-nav navbar-right">

@@ -33,7 +33,7 @@
     </div>
     <!-- End Modal -->
 
-    <!-- Print profile -->
+<div class="row">
     <div class="col-sm-12 col-md-12">
         <!-- Main profile info -->
 
@@ -42,17 +42,37 @@
         <p>Last login: {{ user.last_login|date:"d M Y" }}</p>
         <p>Joined: {{ user.date_joined|timesince }} ago.</p>
         <p>Email: {{ user.email }}</p>
-        {% for score in scores %}
-            {{ score.score }}
-            {{ score.game }}
-        {% endfor %}
-
+        <p>Match Average Score: {{ match_avg.score__avg|floatformat:3 }}</p>
+        <p>Snake Average Score: {{ snake_avg.score__avg|floatformat:3 }}</p>
         <button class="btn btn-primary btn-sm pull-right" data-toggle="modal" data-target="#myModal">
             Edit Profile
         </button>
-
+    </div>
+</div>
+<div class="row">
+    <div class="col-sm-12 col-md-6">
+        <h1>Match Game Leaderboard</h1>
+        {% for match in match_leader %}
+            <div class="row">
+                {{ match.score }}
+                {{ match.mode }}
+                {{ match.timestamp }}
+            </div>
+        {% endfor %}
 
     </div>
+    <div class="col-sm-12 col-md-6">
+        <h1>Snakes! Leaderboard</h1>
+        {% for snake in snake_leader %}
+            <div class="row">
+                {{ snake.score }}
+                {{ snake.mode }}
+                {{ snake.timestamp }}
+            </div>
+        {% endfor %}
+
+    </div>
+</div>
 
 {% endblock %}
 

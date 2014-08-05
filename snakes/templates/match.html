@@ -6,13 +6,23 @@
 
 {% block nav %}{% endblock %}
 
-{% load staticfiles %}
 {% block content %}
     <center>
         <button id="easy">Easy</button>
         <button id="medium">Medium</button>
         <button id="difficult">Difficult</button>
     </center>
+
+<div id="overlay">
+    <h1>Winner! Winner!</h1>
+    <img src="{% static 'img/win.gif' %}" />
+    <span></span>
+</div>
+<div id="box">
+
+    <div class="pokemon"></div>
+</div>
+
 
 
 {% endblock %}

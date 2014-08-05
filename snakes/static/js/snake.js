@@ -14,6 +14,7 @@ canvasContext.font="20px Georgia";
     var snakeBody;
     var currentDirection;
     var gameSpeed;
+    var mode;
 
     var gameLoopInterval;
 
@@ -47,12 +48,28 @@ function gameLoop() {
 }
 
 function gameOver() {
+
+    data = {'score': score, 'game': 'snake', 'mode': mode};
+    data = JSON.stringify(data);
+    $.ajax({
+        type: "POST",
+        dataType: "json",
+        url: "/update_score/",
+        data: data,
+        success: function(response) {
+            console.log(response);
+        },
+        error: function(response) {
+            console.log(response);
+        }
+    });
     clearInterval(gameLoopInterval);
     canvasContext.fillStyle = '#000000';
+    canvasContext.font = "60px Helvetica"
     canvasContext.fillRect(0, 0, width, height);
     canvasContext.fillStyle = '#FFF';
 
-    canvasContext.fillText("Game Over", 305, height - 350);
+    canvasContext.fillText("Game Over", 150, height - height/2);
 
 }
 // Let's set up the arrow keys for our game
@@ -160,8 +177,7 @@ function paintCell(x, y, color, index) {
     canvasContext.strokeStyle = "white";
     canvasContext.strokeRect(x * cellWidth, y * cellWidth, cellWidth, cellWidth);
 
-
-
+    canvasContext.font = "14px Helvetica";
     canvasContext.fillStyle="black";
     canvasContext.strokeStyle = "white";
     var scoreText = "Score: " + score;
@@ -193,16 +209,19 @@ function checkGameOver(position, snakeBody) {
     $('#easy').on("click", function() {
         clearInterval(gameLoopInterval);
         gameSpeed = 250;
+        mode = "easy";
         startGame();
     });
     $('#medium').on("click", function() {
         clearInterval(gameLoopInterval);
         gameSpeed = 200;
+        mode = "medium";
         startGame();
     });
     $('#difficult').on("click", function() {
         clearInterval(gameLoopInterval);
         gameSpeed = 150;
+        mode = "difficult";
         startGame();
     });
 
